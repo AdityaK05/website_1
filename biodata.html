@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio-data - My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html">MyPortfolio</a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="resume.html" class="nav-link">Resume</a></li>
+                    <li><a href="biodata.html" class="nav-link active">Bio-data</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <h1>My Bio-data</h1>
+            <p>Personal Information and Details</p>
+        </section>
+
+        <!-- Bio-data Container -->
+        <div class="biodata-container fade-in">
+            <!-- Profile Card -->
+            <div class="biodata-profile">
+                <img id="bioProfileImg" src="profile.jpg" alt="Profile Photo" class="biodata-image">
+                <h2>Aditya Kaushik</h2>
+                <p class="biodata-title">Full Stack Developer | Software Engineer</p>
+            </div>
+            <script>
+                // Load profile image from localStorage if available
+                document.addEventListener('DOMContentLoaded', function() {
+                    const storedImage = localStorage.getItem('profileImage');
+                    if (storedImage) {
+                        document.getElementById('bioProfileImg').src = storedImage;
+                    }
+                });
+            </script>
+
+            <!-- Bio-data Table -->
+            <div class="biodata-table-wrapper">
+                <table class="biodata-table">
+                    <tbody>
+                        <!-- Personal Information -->
+                        <tr>
+                            <th colspan="2" class="table-section-header">Personal Information</th>
+                        </tr>
+                        <tr>
+                            <td class="label">Full Name</td>
+                            <td>Aditya Kaushik</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Date of Birth</td>
+                            <td>05 August 2005</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Age</td>
+                            <td>19 Years</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Gender</td>
+                            <td>Male</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Father's Name</td>
+                            <td>Not Disclosed</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Mother's Name</td>
+                            <td>Not Disclosed</td>
+                        </tr>
+
+                        <!-- Contact Information -->
+                        <tr>
+                            <th colspan="2" class="table-section-header">Contact Information</th>
+                        </tr>
+                        <tr>
+                            <td class="label">Email Address</td>
+                            <td>adityagr8.05@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Phone Number</td>
+                            <td>+91-7275247405</td>
+                        </tr>
+                        <tr>
+                            <td class="label">City/Location</td>
+                            <td>Bengaluru, India</td>
+                        </tr>
+
+                        <!-- Additional Details -->
+                        <tr>
+                            <th colspan="2" class="table-section-header">Additional Details</th>
+                        </tr>
+                        <tr>
+                            <td class="label">Nationality</td>
+                            <td>Indian</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Marital Status</td>
+                            <td>Single</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Religion</td>
+                            <td>Not Disclosed</td>
+                        </tr>
+
+                        <!-- Education -->
+                        <tr>
+                            <th colspan="2" class="table-section-header">Education</th>
+                        </tr>
+                        <tr>
+                            <td class="label">Current Qualification</td>
+                            <td>B.E. Computer Science & Engineering (Pursuing)</td>
+                        </tr>
+                        <tr>
+                            <td class="label">College/University</td>
+                            <td>Bangalore Institute of Technology (BIT)</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Current CGPA</td>
+                            <td>9.1 / 10.0</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Expected Year of Graduation</td>
+                            <td>2027</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Higher Secondary (12th)</td>
+                            <td>Jagran Public School, Varanasi - 83%</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Secondary (10th)</td>
+                            <td>Jagran Public School, Varanasi - 96%</td>
+                        </tr>
+
+                        <!-- Languages -->
+                        <tr>
+                            <th colspan="2" class="table-section-header">Languages</th>
+                        </tr>
+                        <tr>
+                            <td class="label">Native Language</td>
+                            <td>Hindi</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Other Languages</td>
+                            <td>English (Fluent), French (Basic), Sanskrit (Basic)</td>
+                        </tr>
+
+                        <!-- Professional Information -->
+                        <tr>
+                            <th colspan="2" class="table-section-header">Professional Information</th>
+                        </tr>
+                        <tr>
+                            <td class="label">Current Status</td>
+                            <td>Student | Seeking Internships & Full-time Opportunities</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Years of Experience</td>
+                            <td>2+ Years (Academic & Project Experience)</td>
+                        </tr>
+                        <tr>
+                            <td class="label">DSA Problems Solved</td>
+                            <td>400+ (LeetCode, Codeforces)</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Technical Skills</td>
+                            <td>C, C++, Python, Java, JavaScript, React, Next.js, Node.js, Express, PostgreSQL, MongoDB</td>
+                        </tr>
+                        <tr>
+                            <td class="label">GitHub Profile</td>
+                            <td><a href="https://github.com" class="link" target="_blank">GitHub Link</a></td>
+                        </tr>
+
+                        <!-- Social Links -->
+                        <tr>
+                            <th colspan="2" class="table-section-header">Social Links</th>
+                        </tr>
+                        <tr>
+                            <td class="label">Email</td>
+                            <td><a href="mailto:adityagr8.05@gmail.com" class="link">adityagr8.05@gmail.com</a></td>
+                        </tr>
+                        <tr>
+                            <td class="label">GitHub</td>
+                            <td><a href="https://github.com" class="link" target="_blank">GitHub Profile</a></td>
+                        </tr>
+                        <tr>
+                            <td class="label">LeetCode</td>
+                            <td><a href="https://leetcode.com" class="link" target="_blank">LeetCode Profile</a></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Codeforces</td>
+                            <td><a href="https://codeforces.com" class="link" target="_blank">Codeforces Profile</a></td>
+                        </tr>
+
+                        <!-- Declaration -->
+                        <tr>
+                            <th colspan="2" class="table-section-header">Declaration</th>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="declaration">
+                                <p>
+                                    I hereby declare that the information provided above is true and correct to the best of my knowledge. 
+                                    I am willing to undergo any skill test or interview for verification of the same.
+                                </p>
+                                <div class="declaration-date">
+                                    <p>Date: <strong>27 November 2025</strong></p>
+                                    <p>Place: <strong>Bengaluru</strong></p>
+                                    <p style="margin-top: 1rem;">Signature: _____________________</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Print Button -->
+            <div class="print-section">
+                <button class="btn btn-primary" onclick="window.print()">🖨️ Print Bio-data</button>
+                <button class="btn btn-secondary" onclick="downloadBiodata()">📥 Download as PDF</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Load profile image and handle PDF download
+        document.addEventListener('DOMContentLoaded', function() {
+            const storedImage = localStorage.getItem('portfolioProfileImage');
+            if (storedImage) {
+                const img = document.getElementById('bioProfileImg');
+                if (img) img.src = storedImage;
+            }
+        });
+
+        function downloadBiodata() {
+            alert('PDF download functionality would be implemented with a backend service.');
+        }
+    </script>
+</body>
+</html>

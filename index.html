@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html">MyPortfolio</a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="resume.html" class="nav-link">Resume</a></li>
+                    <li><a href="biodata.html" class="nav-link">Bio-data</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="profile-image-container fade-in">
+                    <img id="profileImg" src="profile.jpg" alt="Profile Photo" class="profile-image">
+                </div>
+                <script>
+                    // Load profile image from localStorage if available
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const storedImage = localStorage.getItem('profileImage');
+                        if (storedImage) {
+                            document.getElementById('profileImg').src = storedImage;
+                        }
+                    });
+                </script>
+                <div class="hero-text fade-in">
+                    <h1>Hello, I'm <span class="highlight">Aditya Kaushik</span></h1>
+                    <p class="subtitle">Full Stack Developer | DSA Enthusiast | Problem Solver</p>
+                    <p class="bio-intro">
+                        Welcome to my portfolio! I'm an aspiring software engineer passionate about building scalable, 
+                        production-ready applications. Proficient in full-stack development with React, Node.js, and modern databases. 
+                        Solved 400+ DSA problems and continuously growing my technical expertise through real-world projects.
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="resume.html" class="btn btn-primary">View Resume</a>
+                        <a href="#about" class="btn btn-secondary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>
+                    I'm an aspiring software engineer currently pursuing B.E. in Computer Science & Engineering at 
+                    Bangalore Institute of Technology (CGPA: 9.1). With expertise in full-stack development, I've built 
+                    scalable applications using React, Node.js, Express, and databases like PostgreSQL and MongoDB.
+                </p>
+                <p>
+                    I'm passionate about solving complex problems through code and have tackled 400+ DSA problems across 
+                    multiple platforms (LeetCode, Codeforces). I believe in writing clean, maintainable code and continuously 
+                    learning emerging technologies. I'm actively participating in hackathons and national-level coding competitions.
+                </p>
+                <div class="quick-stats">
+                    <div class="stat">
+                        <h3>Projects</h3>
+                        <p>5+</p>
+                    </div>
+                    <div class="stat">
+                        <h3>DSA Problems</h3>
+                        <p>400+</p>
+                    </div>
+                    <div class="stat">
+                        <h3>Skills</h3>
+                        <p>12+</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Preview Section -->
+        <section class="skills-preview">
+            <h2>Key Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card fade-in-on-scroll">
+                    <h3>Languages</h3>
+                    <p>C, C++, Python, Java, JavaScript</p>
+                </div>
+                <div class="skill-card fade-in-on-scroll">
+                    <h3>Frontend</h3>
+                    <p>React, Next.js, TailwindCSS, HTML, CSS</p>
+                </div>
+                <div class="skill-card fade-in-on-scroll">
+                    <h3>Backend</h3>
+                    <p>Node.js, Express.js, REST APIs, OOPs</p>
+                </div>
+                <div class="skill-card fade-in-on-scroll">
+                    <h3>Databases & Tools</h3>
+                    <p>PostgreSQL, MongoDB, Git, GitHub, Postman</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="cta-section">
+            <h2>Let's Build Something Great</h2>
+            <p>Check out my resume and bio-data to learn more about my qualifications and experience.</p>
+            <div class="cta-links">
+                <a href="resume.html" class="btn btn-primary">View My Resume</a>
+                <a href="biodata.html" class="btn btn-primary">See My Bio-data</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const storedImage = localStorage.getItem('portfolioProfileImage');
+            if (storedImage) {
+                const img = document.getElementById('profileImg');
+                if (img) img.src = storedImage;
+            }
+        });
+    </script>
+</body>
+</html>

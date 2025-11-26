@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Image Converter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #5b6dd9 0%, #4a59c7 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: #5b6dd9;
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 2rem;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+        
+        .upload-area {
+            border: 3px dashed #5b6dd9;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f5f7fa;
+            margin-bottom: 30px;
+        }
+        
+        .upload-area:hover {
+            border-color: #4a59c7;
+            background: #e8f0fe;
+        }
+        
+        .upload-area.dragover {
+            border-color: #4a59c7;
+            background: #e8f0fe;
+            transform: scale(1.02);
+        }
+        
+        input[type="file"] {
+            display: none;
+        }
+        
+        .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        
+        .upload-text {
+            color: #5b6dd9;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .upload-hint {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .preview-section {
+            margin: 30px 0;
+            text-align: center;
+            display: none;
+        }
+        
+        .preview-section.active {
+            display: block;
+        }
+        
+        .preview-title {
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .preview-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #5b6dd9;
+            margin: 0 auto 20px;
+            box-shadow: 0 5px 15px rgba(91, 109, 217, 0.3);
+        }
+        
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-convert {
+            background: linear-gradient(135deg, #5b6dd9 0%, #4a59c7 100%);
+            color: white;
+            grid-column: 1 / -1;
+        }
+        
+        .btn-convert:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(91, 109, 217, 0.3);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: #1a1a1a;
+        }
+        
+        .btn-secondary {
+            background: #e0e6ed;
+            color: #2c3e50;
+        }
+        
+        .btn-primary:hover, .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+        
+        .message.active {
+            display: block;
+        }
+        
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .info-box {
+            background: #e8f0fe;
+            border-left: 4px solid #5b6dd9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: left;
+            color: #2c3e50;
+            font-size: 0.9rem;
+        }
+        
+        .info-box strong {
+            color: #5b6dd9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📸 Your Profile Photo</h1>
+        <p class="subtitle">Upload and set your profile image</p>
+        
+        <div class="upload-area" id="uploadArea">
+            <div class="upload-icon">📤</div>
+            <div class="upload-text">Click or drag your image here</div>
+            <div class="upload-hint">JPG, PNG or any image format • Max 10MB</div>
+            <input type="file" id="fileInput" accept="image/*">
+        </div>
+        
+        <div class="preview-section" id="previewSection">
+            <div class="preview-title">Preview</div>
+            <img id="previewImage" class="preview-image" alt="Preview">
+            
+            <div class="button-group">
+                <button class="btn-primary" onclick="copyToClipboard()">📋 Copy Image Code</button>
+                <button class="btn-secondary" onclick="downloadImage()">📥 Download Image</button>
+            </div>
+            <button class="btn-convert" onclick="updatePortfolio()">✅ Update Portfolio</button>
+        </div>
+        
+        <div class="message" id="message"></div>
+        
+        <div class="info-box">
+            <strong>ℹ️ What happens:</strong><br>
+            Your image will be:<br>
+            • Cropped to a perfect square<br>
+            • Converted to a circular profile photo<br>
+            • Optimized for web (fast loading)<br>
+            • Applied to all pages automatically
+        </div>
+    </div>
+
+    <script>
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const previewSection = document.getElementById('previewSection');
+        const previewImage = document.getElementById('previewImage');
+        const message = document.getElementById('message');
+        let processedImageData = null;
+
+        // Click to upload
+        uploadArea.addEventListener('click', () => fileInput.click());
+
+        // Drag and drop
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                fileInput.files = files;
+                handleImageUpload();
+            }
+        });
+
+        fileInput.addEventListener('change', handleImageUpload);
+
+        function handleImageUpload() {
+            const file = fileInput.files[0];
+            if (!file) return;
+
+            // Check file size
+            if (file.size > 10 * 1024 * 1024) {
+                showMessage('❌ File too large. Max 10MB allowed.', 'error');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onload = () => {
+                    // Create circular profile image
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+
+                    // Set size
+                    const size = Math.min(img.width, img.height);
+                    canvas.width = 400;
+                    canvas.height = 400;
+
+                    // Draw white background
+                    ctx.fillStyle = 'white';
+                    ctx.fillRect(0, 0, 400, 400);
+
+                    // Create circular path
+                    ctx.beginPath();
+                    ctx.arc(200, 200, 200, 0, Math.PI * 2);
+                    ctx.clip();
+
+                    // Draw image
+                    const x = (400 - img.width) / 2;
+                    const y = (400 - img.height) / 2;
+                    ctx.drawImage(img, x, y);
+
+                    // Get image data
+                    processedImageData = canvas.toDataURL('image/jpeg', 0.95);
+                    previewImage.src = processedImageData;
+                    previewSection.classList.add('active');
+                    
+                    showMessage('✅ Image ready! Click "Update Portfolio" to apply.', 'success');
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function showMessage(text, type) {
+            message.textContent = text;
+            message.className = `message active ${type}`;
+            setTimeout(() => {
+                if (message.classList.contains('success')) {
+                    // Keep success message
+                }
+            }, 3000);
+        }
+
+        function copyToClipboard() {
+            if (!processedImageData) return;
+            navigator.clipboard.writeText(processedImageData).then(() => {
+                showMessage('✅ Image code copied to clipboard!', 'success');
+            });
+        }
+
+        function downloadImage() {
+            if (!processedImageData) return;
+            const link = document.createElement('a');
+            link.href = processedImageData;
+            link.download = 'profile.jpg';
+            link.click();
+            showMessage('✅ Image downloaded as profile.jpg', 'success');
+        }
+
+        function updatePortfolio() {
+            if (!processedImageData) return;
+
+            // Store in localStorage
+            localStorage.setItem('profileImage', processedImageData);
+            
+            // Show success message
+            showMessage('✅ Portfolio updated! Check your website now.', 'success');
+
+            // Redirect to home page after a short delay
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1000);
+        }
+
+        // Load image on page load if exists
+        window.addEventListener('load', () => {
+            const storedImage = localStorage.getItem('profileImage');
+            if (storedImage) {
+                previewImage.src = storedImage;
+                previewSection.classList.add('active');
+                processedImageData = storedImage;
+            }
+        });
+    </script>
+</body>
+</html>
