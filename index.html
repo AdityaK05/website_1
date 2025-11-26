@@ -34,17 +34,8 @@
         <section class="hero">
             <div class="hero-content">
                 <div class="profile-image-container fade-in">
-                    <img id="profileImg" src="profile.jpg" alt="Profile Photo" class="profile-image">
+                    <img src="profile.png" alt="Profile Photo" class="profile-image">
                 </div>
-                <script>
-                    // Load profile image from localStorage if available
-                    document.addEventListener('DOMContentLoaded', function() {
-                        const storedImage = localStorage.getItem('profileImage');
-                        if (storedImage) {
-                            document.getElementById('profileImg').src = storedImage;
-                        }
-                    });
-                </script>
                 <div class="hero-text fade-in">
                     <h1>Hello, I'm <span class="highlight">Aditya Kaushik</span></h1>
                     <p class="subtitle">Full Stack Developer | DSA Enthusiast | Problem Solver</p>
@@ -141,14 +132,5 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const storedImage = localStorage.getItem('portfolioProfileImage');
-            if (storedImage) {
-                const img = document.getElementById('profileImg');
-                if (img) img.src = storedImage;
-            }
-        });
-    </script>
 </body>
 </html>

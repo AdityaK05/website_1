@@ -40,19 +40,10 @@
         <div class="biodata-container fade-in">
             <!-- Profile Card -->
             <div class="biodata-profile">
-                <img id="bioProfileImg" src="profile.jpg" alt="Profile Photo" class="biodata-image">
+                <img src="profile.png" alt="Profile Photo" class="biodata-image">
                 <h2>Aditya Kaushik</h2>
                 <p class="biodata-title">Full Stack Developer | Software Engineer</p>
             </div>
-            <script>
-                // Load profile image from localStorage if available
-                document.addEventListener('DOMContentLoaded', function() {
-                    const storedImage = localStorage.getItem('profileImage');
-                    if (storedImage) {
-                        document.getElementById('bioProfileImg').src = storedImage;
-                    }
-                });
-            </script>
 
             <!-- Bio-data Table -->
             <div class="biodata-table-wrapper">
@@ -254,15 +245,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>
     <script>
-        // Load profile image and handle PDF download
-        document.addEventListener('DOMContentLoaded', function() {
-            const storedImage = localStorage.getItem('portfolioProfileImage');
-            if (storedImage) {
-                const img = document.getElementById('bioProfileImg');
-                if (img) img.src = storedImage;
-            }
-        });
-
         function downloadBiodata() {
             alert('PDF download functionality would be implemented with a backend service.');
         }
